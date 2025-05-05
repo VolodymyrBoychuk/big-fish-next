@@ -1,12 +1,10 @@
-//"use client";
-
 import Image from "next/image";
 import female from "../assets/female-web-designer-office-1.png";
 import representation from "../assets/representation-user-experience-interface-design-1.png";
 
 export default function Home() {
   return (
-    <div className="flex justify-center w-full min-h-screen bg-[#0c1650] pt-[60px]">
+    <div className="flex justify-center w-full min-h-screen bg-[#0c1650]">
       <div className="relative w-full h-screen overflow-hidden bg-[#0c1650]">
         {/* Background Images */}
         <Image
