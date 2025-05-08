@@ -1,6 +1,6 @@
 import Image from "next/image";
-import female from "../assets/female-web-designer-office-1.png";
-import representation from "../assets/representation-user-experience-interface-design-1.png";
+import female from "../../assets/female-web-designer-office-1.png";
+import representation from "../../assets/representation-user-experience-interface-design-1.png";
 
 export default function Home() {
   return (

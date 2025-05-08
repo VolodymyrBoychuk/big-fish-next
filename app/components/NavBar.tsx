@@ -10,7 +10,7 @@ const links = [
   { to: "/focus-areas", label: "Focus Areas" },
   { to: "/technology", label: "Technology" },
   { to: "/projects", label: "Projects" },
-  { to: "/blog", label: "Blog" },
+  { to: "/blogs/1", label: "Blog" },
   { to: "/contacts", label: "Contacts" },
 ];
 
@@ -32,7 +32,7 @@ const NavBar = () => {
               <Link
                 key={to}
                 href={to}
-                className={`cursor-pointer transition-colors duration-200 hover:text-[#4a90e2] ${
+                className={`cursor-pointer transition-colors duration-200 hover:text-[#4a90e2] hover:underline ${
                   isActive ? "text-[#4a90e2] font-semibold" : ""
                 }`}
               >

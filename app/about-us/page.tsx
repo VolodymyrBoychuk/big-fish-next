@@ -52,7 +52,7 @@ const About = () => {
                 <br />
                 <br />
                 Whether we&apos;re building your MVP or improving an existing
-                codebase, we treat every line of code like it's going to
+                codebase, we treat every line of code like it&apos;s going to
                 production.
               </p>
             </div>
