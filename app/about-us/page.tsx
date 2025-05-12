@@ -3,7 +3,7 @@ import colleaguesOfficeHoldingHandsEachOther1 from "../../assets/colleagues-offi
 
 const About = () => {
   return (
-    <div className="relative h-screen pt-[160px] w-full bg-[#0c1650] ">
+    <div className="relative h-screen pt-[100px] w-full bg-[#0c1650] ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 top-[60px]">
         <Image
@@ -19,7 +19,7 @@ const About = () => {
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* LEFT SIDE TEXT */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-1">
             <div className="bg-[#0c1650] rounded-md shadow-lg p-6 md:p-10">
               <div className="flex flex-col gap-4">
                 <h1 className="font-extrabold text-[64px] bg-gradient-to-r from-[#4a90e2] via-[#4a90e2] to-white bg-clip-text text-transparent">

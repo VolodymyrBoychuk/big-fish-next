@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import PageOne from "../ProjectsPages/PageOne";
 import PageTwo from "../ProjectsPages/PageTwo";
 import PageThree from "../ProjectsPages/PageThree";
@@ -45,15 +45,18 @@ const Projects = () => {
     <div className="relative w-full h-screen bg-[#0c1650] flex flex-col items-center justify-between">
       {/* Сторінки */}
       <div className="relative w-full h-full overflow-hidden">
-        <motion.div
-          key={currentPage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 2 }}
-        >
-          <div className="shadow-md">{pages[currentPage]}</div>
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPage}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="absolute w-full h-full"
+          >
+            <div className="shadow-md w-full h-full">{pages[currentPage]}</div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Кнопки навігації */}

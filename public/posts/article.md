@@ -2,7 +2,7 @@
 title: "The Rise of JavaScript Frameworks in Modern Web Development"
 text: "A practical breakdown of when UIKit still outperforms SwiftUI — from scroll performance to layout control — and how we blend both in real apps."
 image: "/assets/Blog/Placeholder-Image.png"
-date: "2024-11-05"
+date: "2025-11-05"
 author: "Boichuk Sasha"
 ---
 
