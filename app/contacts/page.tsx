@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import envelope from "../../assets/Contact/Icon/envelope.png";
 import tel from "../../assets/Contact/Icon/icon.png";
@@ -6,6 +7,66 @@ import instagram from "../../assets/Contact/Icon/instagram.png";
 import twitter from "../../assets/Contact/Icon/twitter.png";
 
 const Contacts = () => {
+  const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData.entries());
+
+    if (
+      !formObject.name ||
+      typeof formObject.name !== "string" ||
+      formObject.name.trim().length < 3
+    ) {
+      alert("❌ The name must contain at least 3 characters!");
+      return;
+    }
+
+    if (
+      !formObject.email ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formObject.email.toString())
+    ) {
+      alert("❌ Please enter a valid email!");
+      return;
+    }
+
+    if (
+      !formObject.message ||
+      typeof formObject.message !== "string" ||
+      formObject.message.trim().length < 5
+    ) {
+      alert("❌ The message must contain at least 5 characters!");
+      return;
+    }
+    if (
+      formObject.phone &&
+      (typeof formObject.phone !== "string" || formObject.phone.trim() === "")
+    ) {
+      alert("❌ Phone must be a valid string!");
+      return;
+    }
+    console.log("✅ The data has been validated:", formObject);
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        body: JSON.stringify(formObject),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error while sending!");
+      }
+
+      console.log("✅ Successfully sent");
+      form.reset();
+    } catch (error) {
+      console.error("❌ Error:", error);
+    }
+  };
+
   return (
     <div className="bg-[#0c1650] mt-16 h-screen overflow-hidden">
       {/* Header */}
@@ -76,7 +137,7 @@ const Contacts = () => {
         {/* Right Section: Form */}
         <div>
           <div className="bg-[#374591] p-6 rounded-lg border-none">
-            <form>
+            <form onSubmit={sendEmail} className="space-y-4">
               <div className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -86,6 +147,7 @@ const Contacts = () => {
                     <input
                       id="name"
                       type="text"
+                      name="name"
                       className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                       placeholder="Name"
                       required
@@ -98,6 +160,7 @@ const Contacts = () => {
                     <input
                       id="phone"
                       type="tel"
+                      name="phone"
                       className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                       placeholder="Phone"
                     />
@@ -111,6 +174,7 @@ const Contacts = () => {
                   <input
                     id="email"
                     type="email"
+                    name="email"
                     className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                     placeholder="Email"
                     required
@@ -123,6 +187,7 @@ const Contacts = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                     placeholder="Your message"
                   ></textarea>
