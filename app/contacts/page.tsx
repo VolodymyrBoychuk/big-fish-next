@@ -5,10 +5,20 @@ import tel from "../../assets/Contact/Icon/icon.png";
 import facebook from "../../assets/Contact/Icon/facebook.png";
 import instagram from "../../assets/Contact/Icon/instagram.png";
 import twitter from "../../assets/Contact/Icon/twitter.png";
+import { useState } from "react";
 
 const Contacts = () => {
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [message, setMessage] = useState("");
+
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setStatus("loading");
+    setMessage("");
+
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const formObject = Object.fromEntries(formData.entries());
@@ -59,10 +69,13 @@ const Contacts = () => {
       if (!response.ok) {
         throw new Error("Error while sending!");
       }
-
+      setStatus("success");
+      setMessage("Request successfully sent! We will contact you soon.");
       console.log("✅ Successfully sent");
       form.reset();
     } catch (error) {
+      setStatus("error");
+      setMessage("An error occurred. Please try again.");
       console.error("❌ Error:", error);
     }
   };
@@ -198,10 +211,17 @@ const Contacts = () => {
                   <button
                     type="submit"
                     className="bg-[#4a90e2] text-white py-2 px-6 rounded-md w-1/4"
+                    disabled={status === "loading"}
                   >
-                    Submit
+                    {status === "loading" ? "Sending..." : "Submit"}
                   </button>
                 </div>
+                {status === "success" && (
+                  <div className="text-green-400 font-medium">{message}</div>
+                )}
+                {status === "error" && (
+                  <div className="text-red-400 font-medium">{message}</div>
+                )}
               </div>
             </form>
           </div>
