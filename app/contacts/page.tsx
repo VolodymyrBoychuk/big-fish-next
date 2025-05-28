@@ -271,9 +271,6 @@ const Contacts = () => {
                 {message && (
                   <div className="text-green-400 font-medium">{message}</div>
                 )}
-                {/* {status === "error" && (
-                  <div className="text-red-400 font-medium">{message}</div>
-                )} */}
               </div>
             </form>
           </div>
