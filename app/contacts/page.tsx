@@ -7,60 +7,73 @@ import instagram from "../../assets/Contact/Icon/instagram.png";
 import twitter from "../../assets/Contact/Icon/twitter.png";
 import { useState } from "react";
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+  phone: string;
+}
+
+const validateField = (name: keyof FormData, value: string): string => {
+  if (name === "name" && (!value || value.length < 3)) {
+    return "❌ The name must contain at least 3 characters!";
+  }
+  if (
+    name === "email" &&
+    (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+  ) {
+    return "❌ Please enter a valid email!";
+  }
+  if (
+    name === "message" &&
+    (!value || typeof value !== "string" || value.trim().length < 5)
+  ) {
+    return "❌ The message must contain at least 5 characters!";
+  }
+  if (name === "phone" && (!value || !/^\+?[1-9]\d{1,14}$/.test(value))) {
+    return "❌ Phone must be a valid string!";
+  }
+  return "";
+};
+
 const Contacts = () => {
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+    phone: "",
+  });
+  const [errors, setErrors] = useState<Partial<FormData>>({});
   const [message, setMessage] = useState("");
+
+  const hasErrors = Object.values(errors).some((error) => error !== "");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setMessage("");
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    const error = validateField(name as keyof FormData, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const error = validateField(name as keyof FormData, value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
 
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    setStatus("loading");
     setMessage("");
-
-    const form = event.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const formObject = Object.fromEntries(formData.entries());
-
-    if (
-      !formObject.name ||
-      typeof formObject.name !== "string" ||
-      formObject.name.trim().length < 3
-    ) {
-      alert("❌ The name must contain at least 3 characters!");
-      return;
-    }
-
-    if (
-      !formObject.email ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formObject.email.toString())
-    ) {
-      alert("❌ Please enter a valid email!");
-      return;
-    }
-
-    if (
-      !formObject.message ||
-      typeof formObject.message !== "string" ||
-      formObject.message.trim().length < 5
-    ) {
-      alert("❌ The message must contain at least 5 characters!");
-      return;
-    }
-    if (
-      formObject.phone &&
-      (typeof formObject.phone !== "string" || formObject.phone.trim() === "")
-    ) {
-      alert("❌ Phone must be a valid string!");
-      return;
-    }
-    console.log("✅ The data has been validated:", formObject);
-
     try {
       const response = await fetch("/api/send", {
         method: "POST",
-        body: JSON.stringify(formObject),
+        body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
         },
@@ -69,12 +82,11 @@ const Contacts = () => {
       if (!response.ok) {
         throw new Error("Error while sending!");
       }
-      setStatus("success");
+
       setMessage("Request successfully sent! We will contact you soon.");
       console.log("✅ Successfully sent");
-      form.reset();
+      //form.reset();
     } catch (error) {
-      setStatus("error");
       setMessage("An error occurred. Please try again.");
       console.error("❌ Error:", error);
     }
@@ -164,7 +176,16 @@ const Contacts = () => {
                       className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                       placeholder="Name"
                       required
+                      value={formData.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      aria-describedby="name-error"
                     />
+                    {errors.name && (
+                      <p id="name-error" className="error" aria-live="polite">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="phone" className="sr-only">
@@ -176,7 +197,16 @@ const Contacts = () => {
                       name="phone"
                       className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                       placeholder="Phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      aria-describedby="phone-error"
                     />
+                    {errors.phone && (
+                      <p id="phone-error" className="error" aria-live="polite">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -191,7 +221,16 @@ const Contacts = () => {
                     className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                     placeholder="Email"
                     required
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-describedby="email-error"
                   />
+                  {errors.email && (
+                    <p id="email-error" className="error" aria-live="polite">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -203,25 +242,38 @@ const Contacts = () => {
                     name="message"
                     className="bg-[#B8CAE01F] border-none p-3 rounded-md w-full placeholder-gray-500"
                     placeholder="Your message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-describedby="message-error"
                   ></textarea>
+                  {errors.message && (
+                    <p id="message-error" className="error" aria-live="polite">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit Button */}
                 <div className="flex justify-end mt-4">
                   <button
                     type="submit"
-                    className="bg-[#4a90e2] text-white py-2 px-6 rounded-md w-1/4"
-                    disabled={status === "loading"}
+                    className={`bg-[#4a90e2] text-white py-2 px-6 rounded-md w-1/4 ${
+                      hasErrors
+                        ? "opacity-50 cursor-not-allowed"
+                        : "opacity-100"
+                    }`}
+                    disabled={hasErrors}
                   >
-                    {status === "loading" ? "Sending..." : "Submit"}
+                    Submit
                   </button>
                 </div>
-                {status === "success" && (
+                {message && (
                   <div className="text-green-400 font-medium">{message}</div>
                 )}
-                {status === "error" && (
+                {/* {status === "error" && (
                   <div className="text-red-400 font-medium">{message}</div>
-                )}
+                )} */}
               </div>
             </form>
           </div>
