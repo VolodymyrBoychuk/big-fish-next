@@ -11,16 +11,34 @@ export interface FocusArea {
 const data: FocusArea[] = [
   {
     id: 1,
-    title: "Finance (FinTech)",
-    content: `Our core focus is native iOS development — but our strength goes deeper: we’ve worked on
-      complex production systems with performance-critical database access, large data flows,
-      and tight integration between frontend and backend.
-      We know how to structure your app for real-world scale — from hybrid UIKit/SwiftUI
-      interfaces to asynchronous state flows and optimized data access (CoreData, SQLite,
-      CloudKit, or custom APIs).`,
+    title: "Healthcare & Wellness",
+    content: `We build wellness and health-support apps where trust, clarity, and performance are critical. From mental health tools to habit systems or patient onboarding flows — our systems are built with privacy, offline access, and simplicity in mind.
+We support design teams with clean handoff, build modular frontends, and integrate with secure backends or APIs as needed. Whether you're working on a B2C product or an internal patient app, we structure the product around clarity and future-proof tech decisions.`,
   },
-  { id: 2, title: "Healthcare (HealthTech)", content: "You never see it" },
-  { id: 3, title: "Logistics", content: "Це вміст для пункту 3" },
+  {
+    id: 2,
+    title: "E-commerce & Subscriptions",
+    content: `We help commerce platforms and subscription products create fast, high-conversion experiences. From storefronts and onboarding to purchase logic and upsells — we focus on fluid UX, backend stability, and monetization.
+We support mobile and web frontends, integrate with custom or 3rd-party APIs, and build flexible systems that can scale. We’ve also architected in-app purchase flows, push notification logic, and layered user tiers for growing businesses.`,
+  },
+  {
+    id: 3,
+    title: "Fitness & Activity Tracking",
+    content: `We build reliable, real-time activity tools with user-friendly logging, timers, performance tracking, and goal logic. Whether it’s for training sessions, coaching dashboards, or personal improvement, we focus on a fluid, frictionless experience.
+These apps are often used outdoors, mid-movement, or in offline settings — so we design with clarity, state safety, and battery-conscious flows. We also support in-app analytics and syncing across devices or storage layers.`,
+  },
+  {
+    id: 4,
+    title: "Productivity & Internal Tools",
+    content: `We help teams and founders build tools that actually make things easier — not just add dashboards. Whether it's scheduling, form collection, session logs, or reminders, we design for clarity, simplicity, and scale.
+Our work includes data architecture, modular UI, and optional backend or cloud logic. You’ll get a system that’s responsive, easy to maintain, and works with whatever stack you’re building on.`,
+  },
+  {
+    id: 5,
+    title: "Logistics & Field Tools",
+    content: `We design tools for real work in messy environments: job sites, warehouses, roads, and remote areas. Offline-first, clean interface, fast sync, low-risk errors — these are the priorities we build around.
+Our systems support backend syncing, file uploads, form logic, camera or QR integrations, and checklist workflows. The frontend is simple and rugged — not a pretty UI that breaks in the field.`,
+  },
 ];
 
 export default function FocusAreas() {

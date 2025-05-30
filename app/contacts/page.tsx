@@ -140,21 +140,39 @@ const Contacts = () => {
 
             {/* Social Media Icons */}
             <div className="flex space-x-4">
-              <Image
-                src={facebook}
-                alt="Facebook"
-                className="w-[24px] h-[24px]"
-              />
-              <Image
-                src={instagram}
-                alt="Instagram"
-                className="w-[24px] h-[24px]"
-              />
-              <Image
-                src={twitter}
-                alt="Twitter"
-                className="w-[24px] h-[24px]"
-              />
+              <a
+                href="https://www.facebook.com/vionum"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={facebook}
+                  alt="Facebook"
+                  className="w-[24px] h-[24px] cursor-pointer"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/vionum"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={instagram}
+                  alt="Instagram"
+                  className="w-[24px] h-[24px] cursor-pointer"
+                />
+              </a>
+              <a
+                href="https://twitter.com/vionum"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={twitter}
+                  alt="Twitter"
+                  className="w-[24px] h-[24px] cursor-pointer"
+                />
+              </a>
             </div>
           </div>
         </div>

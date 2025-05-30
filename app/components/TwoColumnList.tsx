@@ -64,9 +64,11 @@ export default function TwoColumnList({ items }: TwoColumnListProps) {
       {/* Right column — контент */}
       <div>
         {selectedItem ? (
-          <p className="text-white text-lg leading-relaxed w-[411px]">
-            {selectedItem.content}
-          </p>
+          <textarea
+            readOnly
+            className="text-white text-lg leading-relaxed w-[440px] h-96 resize-none outline-none cursor-default select-none"
+            value={selectedItem.content}
+          />
         ) : (
           <p className="text-white">Oops...</p>
         )}

@@ -53,13 +53,6 @@ export default function Home() {
           using hybrid SwiftUI/Combine/UIKit components — designed for
           maintainability, performance, and future scaling.
         </p>
-
-        {/* CTA Button */}
-        <div className="absolute top-[600px] left-[648px]">
-          <button className="bg-[#4a90e2] text-white text-base font-medium px-[18px] py-[10px] rounded hover:bg-[#3a78c2] transition-colors duration-200">
-            Let&apos;s talk
-          </button>
-        </div>
       </div>
     </div>
   );
