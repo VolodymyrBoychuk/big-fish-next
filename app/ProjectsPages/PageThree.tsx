@@ -3,6 +3,16 @@ import green_land from "../../assets/CarpTracker/pageThree/Rectangle-8.png";
 import iphone13Pro from "../../assets/CarpTracker/pageThree/iPhone-13-Pro.png";
 import rightArrowAlt from "../../assets/CarpTracker/pageTwo/Icon/right-arrow-alt.png";
 import bottomArrowAlt from "../../assets/CarpTracker/pageThree/Icon/right-arrow-alt.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const PageThree = () => {
   return (

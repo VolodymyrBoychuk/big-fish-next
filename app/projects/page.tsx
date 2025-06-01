@@ -4,6 +4,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import PageOne from "../ProjectsPages/PageOne";
 import PageTwo from "../ProjectsPages/PageTwo";
 import PageThree from "../ProjectsPages/PageThree";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const Projects = () => {
   const [currentPage, setCurrentPage] = useState<number>(0);

@@ -6,6 +6,16 @@ import facebook from "../../assets/Contact/Icon/facebook.png";
 import instagram from "../../assets/Contact/Icon/instagram.png";
 import twitter from "../../assets/Contact/Icon/twitter.png";
 import { useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 interface FormData {
   name: string;

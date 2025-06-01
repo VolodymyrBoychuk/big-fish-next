@@ -1,5 +1,15 @@
 import Image from "next/image";
 import colleaguesOfficeHoldingHandsEachOther1 from "../../assets/colleagues-office-holding-hands-each-other-1.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const About = () => {
   return (

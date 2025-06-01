@@ -7,6 +7,16 @@ import rewardLaptop from "../../assets/reward-laptop.svg";
 import support from "../../assets/support.svg";
 import ui from "../../assets/ui.svg";
 import vector from "../../assets/vector.svg";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const services = [
   {

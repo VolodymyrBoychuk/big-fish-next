@@ -3,6 +3,16 @@ import frameTwo from "../../assets/CarpTracker/pageTwo/Frame-2-1.png";
 import iphone16Pro from "../../assets/CarpTracker/pageTwo/iPhone-16-Pro.png";
 import iphone16ProTwo from "../../assets/CarpTracker/pageTwo/iPhone-16-Pro2.png";
 import rightArrowAlt from "../../assets/Icon/right-arrow-alt-2.svg";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const PageTwo = () => {
   return (

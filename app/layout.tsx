@@ -25,6 +25,10 @@ const publicSans = localFont({
 export const metadata: Metadata = {
   title: "Big Fish",
   description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

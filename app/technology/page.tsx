@@ -3,6 +3,16 @@ import programming from "../../assets/programming-background-with-person-working
 //import rightArrow from "../../assets/Icon/right-arrow-alt-2.svg";
 
 import TwoColumnList from "../components/TwoColumnList";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export interface Tech {
   id: number;

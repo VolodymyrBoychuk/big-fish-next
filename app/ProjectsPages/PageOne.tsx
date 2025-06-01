@@ -4,6 +4,16 @@ import green_bg from "../../assets/CarpTracker/green_237974_755x375.png";
 import iconCarpl from "../../assets/CarpTracker/icon-carp-1.png";
 import iphone16Pro from "../../assets/CarpTracker/iPhone-16-Pro.png";
 import rightArrowAlt from "../../assets/CarpTracker/right-arrow-alt.svg";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const PageOne = () => {
   return (

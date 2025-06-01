@@ -4,6 +4,16 @@ import "highlight.js/styles/atom-one-dark.css";
 import { getAllPosts } from "../../lib/posts";
 import { notFound } from "next/navigation";
 import "./markdown.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const md: MarkdownIt = new MarkdownIt({
   html: true,

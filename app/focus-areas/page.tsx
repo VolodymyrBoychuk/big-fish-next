@@ -1,6 +1,16 @@
 import Image from "next/image";
 import manImg from "../../assets/man-makes-online-payment-with-debit-card-1.png";
 import TwoColumnList from "../components/TwoColumnList";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Big Fish",
+  description: "Big Fish company website",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export interface FocusArea {
   id: number;
