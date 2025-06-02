@@ -1,17 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllPosts } from "../../lib/posts";
-import type { Metadata } from "next";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Big Fish",
-  description: "Big Fish company website",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
 
 interface Props {
   params: Promise<{
@@ -19,25 +8,25 @@ interface Props {
   }>;
 }
 
-export async function generateMetadata({ params }: Props) {
-  const page = Number((await params).id);
-  const postsPerPage = 3;
+// export async function generateMetadata({ params }: Props) {
+//   const page = Number((await params).id);
+//   const postsPerPage = 3;
 
-  const allPosts = await getAllPosts();
-  const totalPages = Math.ceil(allPosts.length / postsPerPage);
+//   const allPosts = await getAllPosts();
+//   const totalPages = Math.ceil(allPosts.length / postsPerPage);
 
-  const metadata: Metadata = {
-    title: `Blog - Page ${page}`,
-    description: `Page ${page} of our blog with current posts.`,
-    alternates: {
-      canonical: `/blogs/${page}`,
-      ...(page > 1 && { prev: `/blogs/${page - 1}` }),
-      ...(page < totalPages && { next: `/blogs/${page + 1}` }),
-    },
-  };
+//   const metadata: Metadata = {
+//     title: `Blog - Page ${page}`,
+//     description: `Page ${page} of our blog with current posts.`,
+//     alternates: {
+//       canonical: `/blogs/${page}`,
+//       ...(page > 1 && { prev: `/blogs/${page - 1}` }),
+//       ...(page < totalPages && { next: `/blogs/${page + 1}` }),
+//     },
+//   };
 
-  return metadata;
-}
+//   return metadata;
+// }
 
 const Blog = async ({ params }: Props) => {
   const { id } = await params;
