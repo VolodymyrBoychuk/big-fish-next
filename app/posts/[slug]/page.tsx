@@ -6,6 +6,12 @@ import { notFound } from "next/navigation";
 import "./markdown.css";
 import type { Metadata } from "next";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(globalThis as any).isSpace = (ch: string | number) => {
+  if (typeof ch === "string") ch = ch.charCodeAt(0);
+  return ch === 32 || ch === 9 || ch === 10 || ch === 13;
+};
+
 export const metadata: Metadata = {
   title: "Big Fish",
   description: "Big Fish company website",

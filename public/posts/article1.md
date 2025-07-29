@@ -1,6 +1,6 @@
 ---
-title: "From Concept to App Store: How We Built CarpTracker with Combine + Realm"
-text: "An inside look at how we built a real-world SwiftUI/Combine app with offline-first storage, session analytics, and a hybrid UIKit system."
+title: "🐟 CarpTracker"
+text: "Частина друга. Ідея застосунку і яку проблему він має вирішувати."
 image: "/assets/Blog/space.png"
 date: "2024-11-05"
 author: "Boichuk Sasha"
@@ -45,50 +45,90 @@ This is `inline code`
 
 ![This is an image](https://deutschvektor.com/images/blog/image_describe_b1.jpg "Image Title")
 
-## Introduction
+# Як мені прийшла ідея застосунку і яку проблему я хотів вирішити для себе?
 
-JavaScript frameworks <code>have</code> revolutionized how developers build web applications, making it easier and faster to create dynamic and interactive user experiences. In this article, we’ll explore the rise of JavaScript frameworks, why they’re so popular, and how they have shaped modern web development.
+Усе почалося з того, що я часто рибалю сам. І коли ти один, важко стежити за всім: вчасно перекидати вудки, підгодовувати точку лову, фіксувати інформацію про клювання, насадки та улови.
 
-## A Brief History of JavaScript Frameworks
+Раніше я записував усе в нотатки — створював таблиці для кожної вудки, вносив туди дані:
 
-JavaScript has come a long way from its humble beginnings as a simple scripting language. Early on, developers faced challenges when building complex applications, especially with browser compatibility and cross-platform issues. However, the emergence of frameworks like **Angular**, **React**, and **Vue** changed the game, bringing structure, performance, and scalability to JavaScript-based development.
+- яка була насадка,
+- коли останній раз годував,
+- коли потрібно перекидати вудку,
+- яку рибу зловив після клювання,
+- чи був схід, тощо.
 
-### Early Frameworks
+Ще одне завдання — зрозуміти, яке дно в секторі, де перспективне місце для лову. Багато рибалок використовують паперові журнали, але я не люблю писати від руки. Такий підхід незручний:
 
-Frameworks like **jQuery** played a critical role in simplifying JavaScript, abstracting common tasks and improving cross-browser compatibility. jQuery laid the foundation for the more sophisticated frameworks that followed.
+- важко аналізувати дані,
+- не можна легко поділитися інформацією,
+- доводиться гортати записи вручну або шукати в нотатках.
 
-### The Shift to Component-Based Architectures
+Крім того, використання будильників або таймерів — незручне і обмежене рішення для контролю часу перезакиду.
 
-The introduction of **React** in 2013 marked a significant shift in how web applications were built. React introduced the concept of components, allowing developers to build reusable, encapsulated parts of the user interface. This approach led to cleaner code, better performance, and more maintainable applications.
-
-## Why JavaScript Frameworks Are So Popular
-
-JavaScript frameworks have become an essential part of web development, and there are several reasons for their widespread adoption:
-
-- **Developer Productivity**: Frameworks offer built-in tools and optimizations, allowing developers to focus on building features rather than solving common issues from scratch.
-- **Community and Ecosystem**: Popular frameworks have large communities, extensive documentation, and a rich ecosystem of third-party libraries, making it easier to find solutions and support.
-- **Cross-Platform Development**: Many frameworks support mobile and desktop applications, providing a seamless experience across different devices.
-
-### Key Features of Popular Frameworks
-
-- **React**: Known for its virtual DOM, JSX syntax, and component-based architecture.
-- **Vue**: Offers reactive two-way data binding, and a gentle learning curve, making it beginner-friendly.
-- **Angular**: A full-featured framework with strong support for large-scale applications and TypeScript integration.
-
-## Challenges with JavaScript Frameworks
-
-Despite their advantages, JavaScript frameworks come with their own set of challenges:
-
-- **Performance Overhead**: Some frameworks introduce performance overhead, especially in large applications.
-- **Learning Curve**: Each framework has a learning curve, requiring time and effort to master.
-- **Constant Evolution**: JavaScript frameworks are continually evolving, making it challenging to keep up with the latest changes and best practices.
-
-## Conclusion
-
-JavaScript frameworks have transformed web development, enabling developers to build sophisticated, high-performance applications quickly and efficiently. Although they present some challenges, the benefits they offer make them invaluable tools in today’s web development landscape.
-
-As we look to the future, it’s clear that JavaScript frameworks will continue to evolve, introducing new features and paradigms to meet the ever-growing demands of users and developers alike.
+Тому виникла ідея: **створити мобільний застосунок**, який допоможе автоматизувати всі ці процеси.
 
 ---
 
-_Thank you for reading! If you enjoyed this article, stay tuned for more insights into the world of web development._
+## Які задачі я поставив перед собою?
+
+Я хотів зробити простий і зручний **електронний щоденник рибалки**, який дозволяє:
+
+- **Створювати риболовну сесію** з внесенням даних:
+
+  - назва озера
+  - сектор
+  - налаштування вудок (дистанція, насадка, час перезакиду)
+  - клювання, сходи, улови, тип риби
+
+- **Вести окремий облік для кожної вудки**:
+
+  - автоматичний або ручний запис клювань
+  - нотування уловів і результатів
+  - збереження всіх параметрів
+
+- **Переглядати статистику**:
+
+  - по сесіях
+  - по озерах
+  - по насадках
+  - по ефективності точок лову
+
+- **Експортувати сесію у PDF**, щоб легко поділитися з іншими
+
+- **Працювати офлайн** та **споживати мінімум заряду батареї**
+
+---
+
+## Що вийшло в результаті?
+
+Я створив **MVP** — базову версію застосунку, яка вирішує ключові проблеми, з якими я стикався на риболовлі.
+
+- Застосунок працює **локально** (без інтернету)
+- Інтерфейс максимально простий і практичний
+- Дані зберігаються лише на пристрої
+
+---
+
+## Подальші плани
+
+У майбутньому я бачу розширену версію:
+
+- з акаунтами користувачів
+- з базою озер, брендів прикормок і насадок
+- з можливістю створювати спільноти, ділитися досвідом
+- з рекомендаціями на основі аналітики користувача
+
+---
+
+## Додаткова цінність
+
+Цей застосунок — не лише особистий інструмент, а й **гарний приклад для портфоліо**. Він демонструє:
+
+- вирішення реальної проблеми
+- UX, що заснований на практичному досвіді
+- продуману структуру функціоналу
+- потенціал для масштабування
+
+---
+
+> **Коротко:** я зробив для себе зручний і ефективний інструмент для риболовлі, який можна розвивати в повноцінний продукт. І це чудова частина мого особистого або професійного портфоліо.

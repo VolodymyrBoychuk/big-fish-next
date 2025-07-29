@@ -10,7 +10,7 @@ const links = [
   { to: "/focus-areas", label: "Focus Areas" },
   { to: "/technology", label: "Technology" },
   { to: "/projects", label: "Projects" },
-  // { to: "/blogs/1", label: "Blog" },
+  { to: "/blogs/1", label: "Blog" },
   { to: "/contacts", label: "Contacts" },
 ];
 
