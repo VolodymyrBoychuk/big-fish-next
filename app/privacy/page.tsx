@@ -5,9 +5,9 @@ export default function Privacy() {
         <strong>Privacy Policy</strong>
         <p>
           This privacy policy applies to the CarpTracker app (hereby referred to
-          as "Application") for mobile devices that was created by Vionum
-          (hereby referred to as "Service Provider") as a Free service. This
-          service is intended for use "AS IS".
+          as &quot;Application&quot;) for mobile devices that was created by
+          Vionum (hereby referred to as &quot;Service Provider&quot;) as a Free
+          service. This service is intended for use &quot;AS IS&quot;.
         </p>
 
         <br />
