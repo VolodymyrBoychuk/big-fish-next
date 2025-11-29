@@ -48,8 +48,8 @@ export async function POST(req: NextRequest) {
 
   const { data, error } = await resend.emails.send({
     from: "onboarding@resend.dev",
-    to: "vladimirboychuk@gmail.com",
-    subject: "Hello from BigFish!",
+    to: "boychuk.sasha1992@gmail.com",
+    subject: "Hello from Vionum!",
     react: EmailCreated({ name, email, message, phone }),
   });
 
